@@ -1,0 +1,11 @@
+<div>
+  <ul>
+    <li ng-repeat="book in books">
+      <h3>{{book.name}}</h3>
+      <p>{{book.year}}</p>
+      <button class="btn btn-primary" ng-click="addToCart(book)">
+        Add to Cart
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" ng-app="appname">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AngularJs QuickStart</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="app.css" rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="app.css" rel="stylesheet" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
     <script src="app.js"></script>
-</head>
-<body>
-
-<div ng-app="appname" ng-controller="Headerctrl">
-    <h1>{{appDetails.title}}</h1>
-
-    <div ng-controller="BookListCtrl">
-        <ul>
-            <li ng-repeat="book in books">
-                <h3>{{book.name}}</h3>
-                <p>{{book.year}}</p>
-                <button class="btn btn-primary" ng-click="addToCart(book)">Add to Cart</button>
-            </li>
-        </ul>
+  </head>
+  <body>
+    <div ng-controller="Headerctrl">
+      <h1>{{appDetails.title}}</h1>
+      <a class="btn btn-success" href="#/books">Books</a>
+      <a class="btn btn-success" href="#/cart">Cart</a>
     </div>
-</div>
-    
-    
-</body>
+
+    <div ng-view></div>
+  </body>
 </html>
