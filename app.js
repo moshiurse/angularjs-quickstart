@@ -1,4 +1,4 @@
-var app = angular.module("appname", ["ngRoute"]);
+var app = angular.module("app", ["ngRoute"]);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -15,14 +15,24 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller("Headerctrl", function($scope) {
-  $scope.appDetails = {
-    title: "Hello Angular Js QuickStart"
+app.factory("cartService", function() {
+  var cart = [];
+
+  return {
+    getCart: function() {
+      return cart;
+    },
+    addToCart: function(book) {
+      cart.push(book);
+    },
+    buy: function(book) {
+      alert("Thanks for buying: ", book.name);
+    }
   };
 });
 
-app.controller("BookListCtrl", function($scope) {
-  $scope.books = [
+app.factory("bookService", function() {
+  books = [
     {
       id: "1",
       name: "algorithm",
@@ -54,16 +64,31 @@ app.controller("BookListCtrl", function($scope) {
       year: "2018"
     }
   ];
-
-  $scope.addToCart = function(book) {
-    console.log(book.id);
+  return {
+    getBooks: function() {
+      return books;
+    },
+    addToCart: function(book) {}
   };
 });
 
-app.controller("CartListCtrl", function($scope) {
-  $scope.cart = [];
+app.controller("CartListCtrl", function($scope, cartService) {
+  $scope.cart = cartService.getCart();
 
   $scope.buy = function(book) {
-    console.log("Buying bookId: " + book.id);
+    cartService.buy(book);
+  };
+});
+
+app.controller("HeaderCtrl", function($scope) {
+  $scope.appDetails = {};
+  $scope.appDetails.title = "Angulajs QuickStart";
+});
+
+app.controller("BookListCtrl", function($scope, bookService, cartService) {
+  $scope.books = bookService.getBooks();
+
+  $scope.addToCart = function(book) {
+    cartService.addToCart(book);
   };
 });
