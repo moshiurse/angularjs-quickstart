@@ -26,7 +26,7 @@ app.factory("cartService", function() {
       cart.push(book);
     },
     buy: function(book) {
-      alert("Thanks for buying: ", book.name);
+      alert("Thanks for buying: " + book.name);
     }
   };
 });

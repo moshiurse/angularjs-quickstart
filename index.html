@@ -17,8 +17,10 @@
     <script src="app.js"></script>
   </head>
   <body>
+    <input type="text" name="name" id="name" ng-model="name" />
+    <h1>Hello {{name | uppercase}} From Angular JS QuickStart</h1>
     <div ng-controller="HeaderCtrl">
-      <h1>{{appDetails.title}}</h1>
+      <h3>{{appDetails.title}}</h3>
       <a class="btn btn-success" href="#/books">Books</a>
       <a class="btn btn-success" href="#/cart">Cart</a>
     </div>

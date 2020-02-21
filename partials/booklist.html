@@ -1,6 +1,8 @@
 <div>
+  Filter your books
+  <input type="text" name="search" ng-model="search" />
   <ul>
-    <li ng-repeat="book in books">
+    <li ng-repeat="book in books | filter: search| orderBy: 'name'">
       <h3>{{book.name}}</h3>
       <p>{{book.year}}</p>
       <button class="btn btn-primary" ng-click="addToCart(book)">
